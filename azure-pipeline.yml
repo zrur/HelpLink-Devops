@@ -1,0 +1,93 @@
+# ======================================
+# Azure Pipeline: HelpLink
+# Projeto: Sistema de Doações
+# Alunos: Arthur (558798), Felipe (556099), Robert (555881)
+# ======================================
+
+trigger:
+  - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  appName: 'helplink'
+  acrName: 'acrfiaphelplink'
+  acrServer: 'acrfiaphelplink.azurecr.io'
+
+stages:
+  - stage: Build
+    displayName: 'Build and Test'
+    jobs:
+      - job: BuildJob
+        displayName: 'Build, Test and Push Docker Image'
+        steps:
+
+          # Passo 1: Rodar testes unitários (OBRIGATÓRIO GS)
+          - task: Maven@3
+            displayName: '🧪 Run Unit Tests'
+            inputs:
+              mavenPomFile: 'pom.xml'
+              goals: 'clean test'
+              publishJUnitResults: true
+              testResultsFiles: '**/TEST-*.xml'
+              javaHomeOption: 'JDKVersion'
+              jdkVersionOption: '1.17'
+              mavenVersionOption: 'Default'
+
+          # Passo 2: Publicar resultados dos testes
+          - task: PublishTestResults@2
+            displayName: '📊 Publish Test Results'
+            condition: always()
+            inputs:
+              testResultsFormat: 'JUnit'
+              testResultsFiles: '**/TEST-*.xml'
+              testRunTitle: 'HelpLink - JUnit Tests'
+              failTaskOnFailedTests: true
+
+          # Passo 3: Replace tokens no application.properties
+          - task: qetza.replacetokens.replacetokens-task.replacetokens@5
+            displayName: '🔄 Replace Tokens'
+            inputs:
+              rootDirectory: 'src'
+              targetFiles: '**/*.properties'
+              encoding: 'auto'
+              tokenPattern: '#{...}#'
+              writeBOM: true
+              actionOnMissing: 'warn'
+              keepToken: false
+              actionOnNoFiles: 'continue'
+              enableTransforms: false
+              useLegacyPattern: false
+              enableTelemetry: true
+
+          # Passo 4: Build da imagem Docker
+          - task: Docker@2
+            displayName: '🐳 Build Docker Image'
+            inputs:
+              containerRegistry: 'acrConnection'
+              repository: 'fiap/$(appName)'
+              command: 'build'
+              Dockerfile: 'dockerfiles/Dockerfile'
+              tags: |
+                $(Build.BuildNumber)
+                latest
+
+          # Passo 5: Push da imagem para ACR
+          - task: Docker@2
+            displayName: '📤 Push to ACR'
+            inputs:
+              containerRegistry: 'acrConnection'
+              repository: 'fiap/$(appName)'
+              command: 'push'
+              tags: |
+                $(Build.BuildNumber)
+                latest
+
+          # Passo 6: Publicar artefatos (opcional para container)
+          - task: PublishBuildArtifacts@1
+            displayName: '📦 Publish Pipeline Artifacts'
+            inputs:
+              PathtoPublish: 'scripts'
+              ArtifactName: 'scripts'
+              publishLocation: 'Container'
