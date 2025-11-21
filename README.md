@@ -123,7 +123,7 @@ Responsável por:
 
 Work Items criados para organização do projeto:
 
-![Uploading image.png…]()
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/bc77c957-fe7b-48ff-9a51-0251264fd8cb" />
 
 Isso comprova a utilização de **metodologia DevOps** e **gestão ágil do projeto**.
 
