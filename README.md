@@ -1,163 +1,178 @@
-🤝 HelpLink – Global Solution FIAP (DevOps & Cloud – 2025)
+# 🤝 HelpLink – Global Solution FIAP (DevOps & Cloud – 2025)
 
+Este repositório contém a aplicação **HelpLink**, desenvolvida como parte da **Global Solution da FIAP – 2º semestre de 2025**, na disciplina **DevOps Tools & Cloud Computing**.
 
+A aplicação foi construída utilizando **Spring Boot**, empacotada em **Docker** e implantada automaticamente na nuvem através do **Azure DevOps + Azure Container Instances (ACI)**.
 
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/3600f688-1bf8-460f-a5a6-18effee3b5f1" />
 
+---
 
+## 🧠 Descrição da Solução
 
-
-
-
-
-Este repositório contém a aplicação HelpLink, desenvolvida como parte da Global Solution da FIAP – 2º semestre de 2025, na disciplina DevOps Tools & Cloud Computing.
-
-A aplicação foi construída utilizando Spring Boot, empacotada em Docker e implantada automaticamente na nuvem através do Azure DevOps + Azure Container Instances (ACI).
-
-🧠 Descrição da Solução
-
-O HelpLink é uma plataforma que conecta doadores, ONGs e instituições sociais, facilitando a criação, gerenciamento e distribuição de doações de forma organizada e transparente.
+O **HelpLink** é uma plataforma que conecta **doadores, ONGs e instituições sociais**, facilitando a criação, gerenciamento e distribuição de doações de forma organizada e transparente.
 
 A solução permite:
 
-Cadastro de usuários
+- ✅ Cadastro de usuários  
+- ✅ Cadastro de ONGs e causas sociais  
+- ✅ Registro de doações  
+- ✅ Consulta de dados em tempo real  
+- ✅ Organização e gestão de doações  
 
-Cadastro de ONGs e causas sociais
+O sistema foi desenvolvido utilizando **Spring Boot (Java 17)**, conectado a um banco de dados em container, empacotado em **Docker** e publicado automaticamente na cloud através do **Azure DevOps (CI/CD)** em uma **Azure Container Instance (ACI)**.
 
-Registro de doações
+---
 
-Consulta de dados em tempo real
+## ✅ Integrantes do Grupo
 
-Organização e gestão de doações
+| Nome           | RM       |
+|----------------|----------|
+| Arthur Ramos   | RM558798 |
+| Felipe Melo    | RM556099 |
+| Robert Coimbra | RM555881 |
 
-O sistema foi desenvolvido utilizando Spring Boot (Java 17), conectado a um banco de dados em container, empacotado em Docker e publicado automaticamente na cloud através do Azure DevOps (CI/CD) em uma Azure Container Instance (ACI).
+---
 
-✅ Integrantes do Grupo
-Nome	RM
-Arthur Ramos	RM558798
-Felipe Melo	RM556099
-Robert Coimbra	RM555881
-🚀 Tecnologias Utilizadas
+## 🚀 Tecnologias Utilizadas
 
-☕ Java 17 + Spring Boot
+- ☕ Java 17 + Spring Boot  
+- 🧰 Maven  
+- 🐳 Docker  
+- 🗄️ Azure Container Registry (ACR)  
+- ☁️ Azure Container Instance (ACI)  
+- 🔁 Azure DevOps Pipelines (CI/CD)  
+- 🗂️ Azure Repos  
+- 📋 Azure Boards  
 
-🧰 Maven
+---
 
-🐳 Docker
+## 🏗️ Arquitetura em Nuvem (Azure)
 
-🗄️ Azure Container Registry (ACR)
+| Recurso                     | Nome                    |
+|------------------------------|-------------------------|
+| Resource Group               | `RG-FIAP-HELPLINK`      |
+| Container Registry           | `acrfiaphelplink`        |
+| Container Instance (App)     | `helplink`                |
+| Container Instance (DB)      | `helplink-oracle-db`      |
+| Pipelines                    | Build + Release          |
 
-☁️ Azure Container Instance (ACI)
+### Fluxo DevOps (CI/CD)
 
-🔁 Azure DevOps Pipelines (CI/CD)
+```
 
-🗂️ Azure Repos
-
-📋 Azure Boards
-
-🏗️ Arquitetura em Nuvem (Azure)
-Recurso	Nome
-Resource Group	RG-FIAP-HELPLINK
-Container Registry	acrfiaphelplink
-Container Instance (App)	helplink
-Container Instance (DB)	helplink-oracle-db
-Pipelines	Build + Release (Azure DevOps)
-Fluxo DevOps (CI/CD)
 Desenvolvedor
-   ↓
+↓
 Azure Repos
-   ↓
+↓
 Pipeline de Build
-   ↓
+↓
 Azure Container Registry (ACR)
-   ↓
+↓
 Pipeline de Release
-   ↓
+↓
 Azure Container Instance (ACI)
-   ↓
+↓
 Aplicação em produção
 
+````
 
-✔️ Automatização completa
-✔️ Entrega contínua
-✔️ Implantação sem uso de VM
+✅ Automatização completa  
+✅ Entrega contínua  
+✅ Implantação sem uso de máquinas virtuais  
 
-🌐 Links do Projeto (OFICIAL)
+---
 
-🔷 Azure DevOps:
+## 🌐 Links do Projeto (OFICIAL)
+
+🔷 **Azure DevOps**  
 https://dev.azure.com/RM558798/HelpLink
 
-🔷 Repositório GitHub:
-https://github.com/zrur/HelpLink-Devops
 
-⚙️ Pipeline DevOps
-🧱 CI – Integração Contínua (Build)
 
-Responsável por:
+---
 
-Build automático do projeto
+## ⚙️ Pipeline DevOps
 
-Criação da imagem Docker
-
-Envio para o Azure Container Registry (ACR)
-
-✅ Status: Succeeded (verde)
-
-🚀 CD – Entrega Contínua (Release / Deploy)
+### 🧱 CI – Integração Contínua (Build)
 
 Responsável por:
 
-Consumir a imagem do ACR
+- Build automático do projeto  
+- Criação da imagem Docker  
+- Envio para o Azure Container Registry (ACR)  
 
-Criar/atualizar a Azure Container Instance
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/2b883df2-d08d-4ce3-8c8e-9accf3f154cf" />
 
-Publicar automaticamente a aplicação
 
-✅ Status: Succeeded (verde)
+---
 
-📋 Azure Boards (Gestão do Projeto)
+### 🚀 CD – Entrega Contínua (Release / Deploy)
 
-Foram criados Work Items no Azure Boards para organização do projeto:
+Responsável por:
 
-✅ Configurar CI/CD para HelpLink
+- Consumir a imagem do ACR  
+- Criar/atualizar a Azure Container Instance  
+- Publicar automaticamente a aplicação  
 
-✅ Criar Pipeline de Build
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/95c10b54-b0d3-4207-96fb-9fd35bf55811" />
 
-✅ Criar Pipeline de Release (Deploy na ACI)
+---
 
-✅ Testar aplicação em produção
+## 📋 Azure Boards (Gestão do Projeto)
 
-Isso comprova o uso de metodologia DevOps e gestão ágil do projeto.
+Work Items criados para organização do projeto:
 
-🐳 Docker
+![Uploading image.png…]()
 
-Dockerfile da aplicação:
+Isso comprova a utilização de **metodologia DevOps** e **gestão ágil do projeto**.
 
+---
+
+## 🐳 Docker
+
+**Dockerfile da aplicação:**
+
+```dockerfile
 FROM openjdk:17
 COPY target/helplink.jar helplink.jar
 ENTRYPOINT ["java", "-jar", "helplink.jar"]
+````
 
-☁️ Azure – Principais recursos utilizados
-Azure Container Registry (ACR)
-Propriedade	Valor
-Nome	acrfiaphelplink
-Login Server	acrfiaphelplink.azurecr.io
-Imagem	acrfiaphelplink.azurecr.io/helplink:latest
-Azure Container Instance (ACI)
-Propriedade	Valor
-Nome	helplink
-Resource Group	RG-FIAP-HELPLINK
-DNS público	Gerado automaticamente pelo Azure
-🧪 Testes Realizados
+---
 
-✅ Aplicação acessada pelo navegador
+## ☁️ Azure – Principais recursos utilizados
 
-✅ APIs testadas com Postman
+### 🔹 Azure Container Registry (ACR)
 
-✅ Comunicação entre containers confirmada
+| Propriedade  | Valor                                        |
+| ------------ | -------------------------------------------- |
+| Nome         | `acrfiaphelplink`                            |
+| Login Server | `acrfiaphelplink.azurecr.io`                 |
+| Imagem       | `acrfiaphelplink.azurecr.io/helplink:latest` |
 
-✅ Deploy automático validado
+### 🔹 Azure Container Instance (ACI)
 
-📦 Estrutura do Projeto
+| Propriedade    | Valor                  |
+| -------------- | ---------------------- |
+| Nome           | `helplink`             |
+| Resource Group | `RG-FIAP-HELPLINK`     |
+| DNS público    | Gerado automaticamente |
+
+---
+
+## 🧪 Testes Realizados
+
+* ✅ Aplicação acessada pelo navegador
+* ✅ APIs testadas via Postman
+* ✅ Comunicação entre containers confirmada
+* ✅ Deploy automático validado
+
+---
+
+## 📦 Estrutura do Projeto
+
+```
 📦 helplink
 ├── src/main/java/br.com.fiap.helplink
 ├── src/main/resources
@@ -165,26 +180,33 @@ DNS público	Gerado automaticamente pelo Azure
 ├── pom.xml
 ├── azure-pipelines.yml
 └── README.md
+```
 
-✅ Status Final do Projeto
-Etapa	Status
-CI com Docker	✅ Concluído
-CD com Deploy na ACI	✅ Concluído
-Aplicação em nuvem	✅ Online
-Azure DevOps	✅ Configurado
-Documentação	✅ Completa
-🏁 Conclusão
+---
 
-O HelpLink demonstra com sucesso a aplicação real de uma arquitetura DevOps + Cloud utilizando a plataforma Microsoft Azure. O projeto contempla todo o ciclo moderno de desenvolvimento, desde o versionamento do código até a entrega automatizada em produção na nuvem.
+## ✅ Status Final do Projeto
 
-Ele comprova domínio sobre:
+| Etapa                    | Status       |
+| ------------------------ | ------------ |
+| CI com Docker            | ✅ Concluído  |
+| CD com Deploy na ACI     | ✅ Concluído  |
+| Aplicação em nuvem       | ✅ Online     |
+| Azure DevOps configurado | ✅ Completo   |
+| Documentação             | ✅ Finalizada |
 
-CI/CD
+---
 
-Containers
+## 🏁 Conclusão
 
-Infraestrutura em nuvem
+O **HelpLink** demonstra com sucesso a aplicação real de uma arquitetura moderna de **DevOps + Cloud utilizando a plataforma Microsoft Azure**.
 
-Automação de processos
+O projeto contempla todo o ciclo de desenvolvimento moderno, desde o versionamento do código até a entrega automatizada em produção na nuvem, comprovando domínio sobre:
 
-DevOps na prática
+* ✅ CI/CD
+* ✅ Containers
+* ✅ Infraestrutura em nuvem
+* ✅ Automação de processos
+* ✅ DevOps na prática
+
+```
+```
